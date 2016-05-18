@@ -1,0 +1,329 @@
+\documentclass[innermargin=10mm]{tikzposter} % See Section 3
+\usepackage{enumitem}
+\usepackage{url}
+\usepackage{wrapfig}
+\geometry{paperwidth=63in,paperheight=42in}
+\graphicspath{./images/}
+
+\title{Tangible Exploration of Subsurface Data}% See Section 4.1
+\institute{North Carolina State University, Raleigh, NC, United States, \texttt{akratoc@ncsu.edu}}
+\author{Anna Petrasova, Brendan A. Harmon, Helena Mitasova and Jeffrey G. White}
+\titlegraphic{\includegraphics{./images/logos/ncstate-type-2x2-red-rgb.eps}}
+
+\usetheme{Autumn} % See Section 5
+%  \usebackgroundstyle{Autumn}
+\usetitlestyle{Default}
+
+
+
+
+
+
+
+\definecolor{mybrown}{HTML}{58433C}
+\definecolor{mybrown2}{HTML}{8B7168}
+\definecolorstyle{test} {
+\definecolor{colorOne}{named}{white}
+\definecolor{colorTwo}{named}{mybrown}
+\definecolor{colorThree}{named}{mybrown2}
+}{
+\colorlet{titlebgcolor}{colorOne}
+\colorlet{titlefgcolor}{colorTwo}
+\colorlet{framecolor}{white}
+}
+
+\usecolorstyle{test}
+
+
+
+\usenotestyle{Corner}
+
+
+
+
+
+\makeatletter
+\renewcommand\TP@maketitle{%
+    \begin{minipage}{0.2\linewidth}
+       \centering
+       \includegraphics[width=0.6\textwidth]{./images/logos/ncstate-type-2x2-red-rgb.eps}
+    \end{minipage}%
+    \hfill
+   \begin{minipage}{0.6\linewidth}
+        \centering
+        \color{titlefgcolor}
+        {\bfseries  \sc {\fontsize{85}{60}\selectfont \@title}  \par}
+        \vspace*{1em}
+        {\huge \@author \par}
+        \vspace*{1em}
+        {\LARGE \@institute}
+    \end{minipage}%
+    \hfill
+    \begin{minipage}{0.2\linewidth}
+      \centering
+%        \includegraphics[width=0.37\textwidth]{grass_logo.pdf}\\
+      \includegraphics[width=0.33\textwidth]{./images/logos/grass_logo.pdf}\\
+      \Large {\textsf{GRASS GIS}}
+   \end{minipage}
+%     \begin{minipage}{0.2\linewidth}
+%        \centering
+%        \includegraphics[width=0.45\textwidth]{./images/logos/grass_logo.pdf}
+%     \end{minipage}
+}
+\setlength{\TP@visibletextwidth}{\textwidth-3\TP@innermargin}
+\setlength{\TP@visibletextheight}{\textheight-3\TP@innermargin}
+
+\newcommand{\seeanimtext}{see animation online}%
+\newcommand{\blocktitlesize}{\huge }
+\makeatother
+
+\setlength{\parskip}{1cm}
+
+\begin{document}
+\maketitle[width=0.7\textwidth,roundedcorners=0pt] % See Section 4.1
+
+
+\begin{columns} % See Section 4.4
+\column{0.2} % See Section 4.4
+\block[titleleft,titleinnersep=8mm]{\blocktitlesize Introduction}{
+\setlength{\parskip}{1em}
+\vspace{-20pt}
+\LARGE
+Since traditional subsurface visualizations can be difficult to interpret
+and often do not convey information in an engaging form, we have developed 
+ a new tangible visualization technique which can 
+ help researchers, students and the general public to
+better understand and interpret volumetric subsurface data.
+
+\begin{wrapfigure}[10]{L}{0.5\linewidth}
+\vspace{-20pt}
+\includegraphics[width=0.95\linewidth]{./images/setup.JPG}
+\end{wrapfigure}
+
+Our visualization technique uses the Tangible geospatial modeling and visualization system -- a system that
+couples a physical 3D model with geospatial modeling through a cycle of scanning
+and projection -- to study subsurface data. 
+% While having a sand model of a study area,
+We can manipulate the surface of a sand model representing our study area
+to explore the subsurface conditions in a natural and intuitive way.
+By offering a direct, tangible interface with multiple ways of interaction,
+this technique is an intuitive alternative to more abstract 3D computer visualization tools.
+
+}
+
+\note[angle=270,radius=44cm,
+width=30cm, linewidth=1cm,
+roundedcorners=60]{
+\LARGE
+
+\vspace{2cm}
+
+\textbf{Tangeoms} [1, 2]
+is a collaborative modeling environment.
+We can analyze the impact of terrain changes by capturing the changes on the model,
+importing them into GRASS GIS [3], performing geospatial analyses
+and projecting the results back on the model.
+Previous applications of Tangeoms explored the impact
+of terrain modifications on viewsheds, solar
+energy potential, and surface-based processes, such as overland
+water flow and sediment transport.
+
+\bigskip\bigskip
+
+\includegraphics[width=0.49\linewidth]{./images/tangeoms/state1}
+\includegraphics[width=0.49\linewidth]{./images/tangeoms/state2}
+}
+
+
+
+\column{0.6}
+\block[titleleft,titleinnersep=8mm]{\blocktitlesize Tangible visualization of soil ``excavation''}
+{
+
+\LARGE
+\vspace{-10pt}
+\begin{minipage}{0.6\linewidth}
+We can look under the ground as if we were at an excavation site by digging into the sand 
+with our hands and then projecting the cross-section 
+of the scanned surface with the 3D raster representing soil properties 
+in a real-time feedback loop. 
+% you can also say 3D voxel model of soils properties
+%, and see the actual data represented as a 3D raster in that particular part of the model.
+In this example, we explore the 3D distribution of measured soil moisture [\%] and its change over time.
+Since we are in the GRASS GIS environment, we can project additional GIS layers (such as an orthophoto, 
+elevation contours, and the flow accumulation) over the model
+to provide spatial context and gain more insights into soil moisture distribution 
+and its relation to landscape.
+
+
+\end{minipage}
+\hfill
+\begin{minipage}{0.37\linewidth}
+\centering
+\includegraphics[width=\linewidth]{./images/cross_section.png}
+\end{minipage}\hfill
+
+\bigskip\bigskip
+
+\includegraphics[width=0.196\linewidth]{./images/excavation/2014_12_03_0042}
+\includegraphics[width=0.196\linewidth]{./images/excavation/2014_12_03_0064}
+\includegraphics[width=0.196\linewidth]{./images/excavation/2014_12_03_0065}
+\includegraphics[width=0.196\linewidth]{./images/excavation/2014_12_03_0070}
+\includegraphics[width=0.196\linewidth]{./images/excavation/2014_12_03_0073}
+\raisebox{0pt}[0pt][0pt]{\hspace{-3cm}\colorbox{white}{\includegraphics[width=3cm]{images/qrcodes/youtube1}}}%
+\newlength{\myl}%
+\settowidth{\myl}{\tiny\seeanimtext}%
+\raisebox{-1ex}[0pt][0pt]{\hspace{-1.8\myl}\colorbox{white}{\small\seeanimtext}}
+
+}
+
+
+\block[titleleft,titleinnersep=8mm]{\blocktitlesize Visualizing vertical profiles}
+{
+\LARGE
+\vspace{-10pt}
+\begin{minipage}{0.745\linewidth}
+\centering
+
+% \includegraphics[width=0.25\linewidth]{./images/slices/2014_12_03_0096_cut}\hfill
+\includegraphics[width=0.32\linewidth]{./images/slices/2014_12_03_0098_cut}
+\includegraphics[width=0.32\linewidth]{./images/slices/2014_12_03_0101_cut}
+\includegraphics[width=0.32\linewidth]{./images/slices/2014_12_03_0111_cut}
+
+\bigskip\bigskip
+
+\includegraphics[width=0.32\linewidth]{./images/slices/2014_12_03_0123_cut}
+\includegraphics[width=0.32\linewidth]{./images/slices/2014_12_03_0129_cut}
+\includegraphics[width=0.32\linewidth]{./images/slices/2014_12_03_0130_cut}
+\end{minipage}
+\begin{minipage}{0.25\linewidth}
+By placing two markers, we specify the location and length of a vertical subsurface profile
+which is then displayed in the legend. This technique is optionally combined with the ``excavation'' visualization.
+Furthermore, we can display other soil properties
+(such as moisture together with the distribution of clay, silt and sand particles)
+to discover relationships between different subsurface properties.
+\end{minipage}
+}
+
+
+\block[titleleft,titleinnersep=8mm]{\blocktitlesize ``Core sample'' visualization}
+{
+\vspace{-10pt}
+\LARGE
+\begin{minipage}{0.28\linewidth}
+We can query the 3D raster vertically at sites specified by placing markers, 
+similar to how we used markers to examine soil cores at given locations. 
+\end{minipage}
+\begin{minipage}{0.72\linewidth}
+\centering
+
+\includegraphics[width=0.24\linewidth]{./images/cores/2014_12_03_0141}
+\includegraphics[width=0.24\linewidth]{./images/cores/2014_12_03_0144}
+\includegraphics[width=0.24\linewidth]{./images/cores/2014_12_03_0151}
+\includegraphics[width=0.24\linewidth]{./images/cores/2014_12_03_0154}
+\raisebox{0pt}[0pt][0pt]{\hspace{-3cm}\colorbox{white}{\includegraphics[width=3cm]{images/qrcodes/youtube2}}}%
+\settowidth{\myl}{\small\seeanimtext}%
+\raisebox{-1ex}[0pt][0pt]{\hspace{-\myl}\colorbox{white}{\small\seeanimtext}}
+\end{minipage}
+}
+
+
+\block[titleleft,titleinnersep=8mm]{\blocktitlesize Time series visualization}
+{
+\vspace{-10pt}
+\LARGE
+\begin{minipage}{0.28\linewidth}
+It is possible to animate measured soil moisture time series
+using any combination of our visualization techniques.
+The date of measurement is displayed together with the data and the legend.
+\end{minipage}
+\begin{minipage}{0.72\linewidth}
+\centering
+
+\includegraphics[width=0.24\linewidth]{./images/timeseries/state2}
+\includegraphics[width=0.24\linewidth]{./images/timeseries/state3}
+\includegraphics[width=0.24\linewidth]{./images/timeseries/state4}
+\includegraphics[width=0.24\linewidth]{./images/timeseries/state5}
+\raisebox{0pt}[0pt][0pt]{\hspace{-3cm}\colorbox{white}{\includegraphics[width=3cm]{images/qrcodes/youtube3}}}%
+\settowidth{\myl}{\small\seeanimtext}%
+\raisebox{-1ex}[0pt][0pt]{\hspace{-\myl}\colorbox{white}{\small \seeanimtext}}
+
+\end{minipage}
+}
+
+
+
+
+
+
+\column{0.2}
+\block[titleleft,titleinnersep=8mm]{\blocktitlesize Soil data}{
+\begin{wrapfigure}[5]{R}{0.5\linewidth}
+\vspace{-20pt}\hfill
+\includegraphics[width=0.95\linewidth]{./images/soil_map.JPG}
+\hfill
+\end{wrapfigure}
+\setlength{\parskip}{0.5cm}
+\LARGE
+The study site is a 12~ha field located at the Lower
+Coastal Plain Tobacco Research Station, Kinston, North Carolina.
+Measured soil physical properties include texture, bulk density, porosity
+and volumetric soil moisture (measured by TDR probes).
+Properties were measured at 60 locations and five depths (8, 23, 38, 53, and 68 cm);
+soil moisture measurements started in 2002 and ended in 2005 with irregular sampling intervals [4].
+
+
+We imported measured data in GRASS GIS as 3D points and an interpolated 3D raster (volume)
+using the regularized spline with tension function implemented in the GRASS GIS module v.vol.rst [5].
+The depth was exaggerated by a factor of 100.
+}
+
+\block[titleleft,titleinnersep=8mm]{\blocktitlesize Additional resources}{
+% qrcode -t EPS -o testing_doc.eps "www.youtube.com/watch?v=QBPzYXiL3TY"
+
+\begin{description}
+ \item[Related videos] ~\\
+ \url{www.youtube.com/watch?v=QBPzYXiL3TY}\\
+ \url{www.youtube.com/watch?v=__fWppH9aqQ}\\
+ \url{www.youtube.com/watch?v=dy6U1jnYkl0}
+ 
+ \item[NCSU OSGeo Research and Education Lab]~\\
+ \url{geospatial.ncsu.edu/osgeorel/tangeoms.html}
+ 
+ \item[GRASS GIS 3D raster data processing]~\\{\fontsize{29}{20}\selectfont
+ \url{grass.osgeo.org/grass70/manuals/raster3dintro.html}}
+ 
+\end{description}
+
+}
+\block[titleleft]{\blocktitlesize References}{
+\fontsize{27}{37.} \selectfont
+\begin{enumerate}[label={[\arabic*]}]
+ \item Petrasova, A., Harmon, B. A., Petras, V., Mitasova, H., 2014.
+\emph{GIS-based environmental modeling with tangible interaction and dynamic visualization.}
+ In: Ames, D.P., Quinn, N.W.T., Rizzoli, A.E. (Eds.),
+ Proceedings of the 7th International Congress on Environmental Modelling and Software,
+ June 15--19, San Diego, California, USA.
+
+\item Tateosian, L., Mitasova, H., Harmon, B. A., Fogleman, B., Weaver, K., Harmon, R. S., 2010.
+\emph{TanGeoMS: tangible geospatial modeling system.}
+IEEE Transactions on Visualization and Computer Graphics, 16(6), 1605--12.
+
+\item Neteler, M., Bowman, M. H., Landa, M., Metz, M., 2012.
+\emph{GRASS GIS: A multi-purpose open source GIS.}
+Environmental Modelling \& Software, 31(0), 124--130.
+
+\item Duffera, M., White, J. G., Weisz, R., 2007.
+\emph{Spatial variability of Southeastern U.S. Coastal Plain soil physical properties:
+Implications for site-specific management.}
+Geoderma, 137(3-4), 327--339.
+
+\vspace{5pt}
+
+\item Hofierka, J., Parajka, J., Mitasova, H., Mitas, L., 2002.
+\emph{Multivariate interpolation of precipitation using regularized spline with tension.}
+Transactions in GIS, 6(2), 135--150.
+\end{enumerate}
+}
+\end{columns}
+\end{document}
